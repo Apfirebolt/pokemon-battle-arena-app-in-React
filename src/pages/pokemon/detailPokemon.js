@@ -3,11 +3,10 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../../store/reducers/pokemon/pokemonActions';
 import { CircularProgress, Typography } from '@material-ui/core';
 import MovesComponent from '../../components/pokemon/moves';
-import FormsComponent from '../../components/pokemon/forms';
 import AbiliitesComponent from '../../components/pokemon/abilities';
-import SpeciesComponent from '../../components/pokemon/species';
 import StasComponent from '../../components/pokemon/stats';
 import SpritesComponent from '../../components/pokemon/sprites';
+import PokemonCardDetails from '../../components/pokemon/otherDetails';
 
 class DetailPokemonPage extends Component {
   constructor() {
@@ -19,24 +18,19 @@ class DetailPokemonPage extends Component {
     this.props.getPokemonDetail(pokemon_name);
   }
 
-  componentDidUpdate() {
-    console.log(this.props.pokemon_data);
-  }
-
   render() {
     const { pokemon_data } = this.props;
     return (
       <Fragment>
         {pokemon_data ?
           <div>
-            <h1>Detail Pokemon page</h1>
-            <h2>{pokemon_data.location_area_encounters}</h2>
-            <h2>Pokedex Number : {pokemon_data.id}</h2>
-            <h2>Base Experience : {pokemon_data.base_experience}</h2>
-            <h2>Height : {pokemon_data.height}</h2>
-            <h2>Weight : {pokemon_data.weight} LBS</h2>
-            <SpeciesComponent
-              species={pokemon_data.species}
+            <PokemonCardDetails
+              name={pokemon_data.name}
+              pokedex={pokemon_data.id}
+              experience={pokemon_data.base_experience}
+              pokemon_weight={pokemon_data.weight}
+              pokemon_height={pokemon_data.height}
+              pokemon_area={pokemon_data.location_area_encounters}
             />
             <AbiliitesComponent
               abilities={pokemon_data.abilities}
@@ -49,9 +43,6 @@ class DetailPokemonPage extends Component {
             />
             <MovesComponent
               moves={pokemon_data.moves}
-            />
-            <FormsComponent
-              forms={pokemon_data.forms}
             />
           </div>
           : <CircularProgress size={200} color={"secondary"} disableShrink />}
