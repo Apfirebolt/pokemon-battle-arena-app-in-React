@@ -1,24 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import HeaderComponent from './layouts/header/header';
+import AccountsRoutePage from './pages/accounts/accountRoutes';
+import ChallengeRoutePage from './pages/challenge/challengeRoutes';
+import DashboardComponent from './pages/dashboard';
+import PokemonRoutesPage from './pages/pokemon/pokemonRoutes';
+import { BrowserRouter as Router, Route, NavLink, Switch, Redirect } from 'react-router-dom';
+import { ToastContainer, toast, Zoom, Bounce } from 'react-toastify'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <HeaderComponent/>
+      <ToastContainer/>
+      <Router>
+        <Switch>
+          <Route path="/" exact component={DashboardComponent} />
+          <Route path="/accounts" component={AccountsRoutePage} />
+          <Route path="/challenge" component={ChallengeRoutePage} />
+          <Route path="/pokemon" component={PokemonRoutesPage} />
+        </Switch>
+      </Router>
     </div>
   );
 }
