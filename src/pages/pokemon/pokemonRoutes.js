@@ -21,7 +21,7 @@ class PokemonRoutesPage extends Component {
         <Switch>
           <Route path={`/${pathPrefix}/move`} exact component={SearchMovePage} />
           <Route path={`/${pathPrefix}/search`} exact component={SearchPokemonPage} />
-          <Route path={`/${pathPrefix}/detail`} exact component={PokemonDetailPage} />
+          <Route path={`/${pathPrefix}/detail/:name`} exact component={PokemonDetailPage} />
           <Route path="" exact component={PokemonHomePage} />
         </Switch>
       </Router>

@@ -29,7 +29,7 @@ export const set_pokemon_detail_data = ( value ) => {
 // Fetch quizes from the Open DB Api
 export const get_pokemon_util = () => {
   return (dispatch) => {
-    const url = process.env.REACT_APP_URL + 'pokemon?limit=100&offset=200';
+    const url = process.env.REACT_APP_URL + 'pokemon?limit=1000&offset=0';
     axios.get(url)
       .then((response) => {
         dispatch(set_pokemon_data(response.data));
@@ -55,9 +55,9 @@ export const get_pokemon_moves_util = () => {
 }
 
 // Fetch data for a single pokemon
-export const get_pokemon_detail_util = () => {
+export const get_pokemon_detail_util = (pokemon_name) => {
   return (dispatch) => {
-    const url = process.env.REACT_APP_URL + 'pokemon/pikachu';
+    const url = process.env.REACT_APP_URL + 'pokemon/' + pokemon_name;
     axios.get(url)
       .then((response) => {
         dispatch(set_pokemon_detail_data(response.data));

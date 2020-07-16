@@ -15,7 +15,8 @@ class DetailPokemonPage extends Component {
   }
 
   componentDidMount() {
-    this.props.getPokemonDetail();
+    let pokemon_name = this.props.match.params.name;
+    this.props.getPokemonDetail(pokemon_name);
   }
 
   componentDidUpdate() {
@@ -67,8 +68,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getPokemonDetail: () => {
-      dispatch(actionCreators.get_pokemon_detail_util());
+    getPokemonDetail: (name) => {
+      dispatch(actionCreators.get_pokemon_detail_util(name));
     },
   }
 };

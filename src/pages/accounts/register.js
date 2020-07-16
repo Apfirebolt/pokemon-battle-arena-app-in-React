@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { FormControl, InputLabel, InputAdornment, Input, InputProps, Container,
   Button, FormHelperText } from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
 import { withStyles } from "@material-ui/core/styles";
 
 
@@ -24,78 +25,112 @@ class RegisterPage extends Component {
       userEmail: '',
       userPassword: '',
       userConfirmPassword: '',
-      errors: {
-        userNameError: [],
-        userEmailError: [],
-        userPasswordError: [],
-        userConfirmPasswordError: []
-      }
+      errors: {}
     }
 
     this.onDataSubmit = this.onDataSubmit.bind(this);
-    this.handleUserNameChange = this.handleUserNameChange.bind(this);
+    this.onChangeData = this.onChangeData.bind(this);
   }
 
-  onDataSubmit() {
-    const { userName, userEmail, userPassword, userConfirmPassword, errors } = this.state;
+  onDataSubmit(event) {
+    let { userName, userEmail, userPassword, userConfirmPassword, errors } = this.state;
+    event.preventDefault();
 
-    console.log('Submit data function called..', userName, userEmail, userPassword, errors);
+    if (this.validateForm()) {
+      userName = "";
+      userEmail = "";
+      userPassword = "";
+      userConfirmPassword = "";
+
+      this.setState({
+        userName,
+        userEmail,
+        userPassword,
+        userConfirmPassword
+      });
+      alert("Form submitted");
+    }
   }
 
-  handleUserNameChange(event) {
-    const { errors, userPassword } = this.state;
-    const dataRole = event.target.getAttribute("data-role");
-    const currentValue = event.target.value;
-    switch (dataRole) {
+  onChangeData(event) {
+    switch (event.target.name) {
       case 'username':
-        if(!currentValue) {
-          errors.userNameError.push("User Name is a required field, cannot be left blank!");
-        }
-        else {
-          errors.userNameError = [];
-        }
         this.setState({
-          userName: currentValue
+          userName: event.target.value
         })
         break;
       case 'email':
-        if(!currentValue) {
-          errors.userEmailError.push("Email is a required field, cannot leave it blank!");
-        }
-        else {
-          errors.userEmailError = [];
-        }
         this.setState({
-          userEmail: currentValue
+          userEmail: event.target.value
         })
         break;
       case 'password':
-        if(!currentValue) {
-          errors.userPasswordError.push('Password is a required field!');
-        }
-        else {
-          errors.userPasswordError = [];
-        }
         this.setState({
-          userPassword: currentValue
+          userPassword: event.target.value
         })
         break;
       case 'confirm_password':
-        if(!currentValue) {
-          errors.userConfirmPasswordError.push('Please Confirm your password!');
-        }
-        else {
-          errors.userConfirmPasswordError = [];
-        }
         this.setState({
-          userConfirmPassword: currentValue
+          userConfirmPassword: event.target.value
         })
     }
+  }
+
+  validateForm() {
+    let { userName, userEmail, userPassword, userConfirmPassword } = this.state;
+    let errors = {};
+    let formIsValid = true;
+
+    if (!userName) {
+      formIsValid = false;
+      errors["username"] = "*Please enter your username.";
+    }
+
+    if (typeof userName !== "undefined") {
+      if (!userName.match(/^[a-zA-Z ]*$/)) {
+        formIsValid = false;
+        errors["username"] = "*Please enter alphabet characters only.";
+      }
+    }
+
+    if (!userEmail) {
+      formIsValid = false;
+      errors["email"] = "*Please enter your email-ID.";
+    }
+
+    if (typeof userEmail !== "undefined") {
+      //regular expression for email validation
+      let pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+      if (!pattern.test(userEmail)) {
+        formIsValid = false;
+        errors["email"] = "*Please enter valid email-ID.";
+      }
+    }
+
+    if (!userPassword) {
+      formIsValid = false;
+      errors["password"] = "*Please enter your password.";
+    }
+
+    if (!userConfirmPassword) {
+      formIsValid = false;
+      errors["confirm_password"] = "*Please confirm your password.";
+    }
+
+    if(typeof userConfirmPassword !== "undefined" && userConfirmPassword !== userPassword) {
+      formIsValid = false;
+      errors["confirm_password"] = "*Passwords you entered did not match.";
+    }
+
+    this.setState({
+      errors: errors
+    });
+    return formIsValid;
   }
 
   render() {
     const { classes } = this.props;
-    const { errors } = this.state;
+    const { errors, userEmail, userName, userPassword, userConfirmPassword } = this.state;
     return (
       <Fragment>
         <h1>Register Page</h1>
@@ -104,71 +139,57 @@ class RegisterPage extends Component {
             <InputLabel htmlFor="standard-adornment-amount">Please Enter Your Username</InputLabel>
 
             <Input
-              id="standard-adornment-amount"
+              id="username"
               aria-describedby="username-helper-text"
-              onChange={(event) => {this.handleUserNameChange(event)}}
-              inputProps={{
-                'data-role':'username'
-              }}
+              name="username"
+              onChange={this.onChangeData}
+              value={userName}
             />
-            {errors.userNameError.length ? errors.userNameError.map((item, index) => {
-              return (
-                <p className="custom_para" key={index}>{item}</p>
-              )
-            })
-            :null}
+            {errors.username &&
+            <Alert severity="error">{errors.username}</Alert>
+            }
           </FormControl>
 
           <FormControl fullWidth style={{ margin: "1rem" }}>
             <InputLabel htmlFor="standard-adornment-amount">Please Enter Your Email</InputLabel>
             <Input
-              id="standard-adornment-amount"
-              onChange={(event) => {this.handleUserNameChange(event)}}
-              inputProps={{
-                'data-role':'email'
-              }}
+              id="email"
+              name="email"
+              onChange={this.onChangeData}
+              value={userEmail}
             />
-
-            {errors.userEmailError.length ? errors.userEmailError.map((item, index) => {
-              return (
-                <p className="custom_para" key={index}>{item}</p>
-              )
-            }):null}
-
+            {errors.email &&
+            <Alert severity="error">{errors.email}</Alert>
+            }
           </FormControl>
 
           <FormControl fullWidth style={{ margin: "1rem" }}>
             <InputLabel htmlFor="standard-adornment-amount">Please Enter Your Password</InputLabel>
             <Input
-              id="standard-adornment-amount"
-              onChange={(event) => {this.handleUserNameChange(event)}}
+              id="password"
+              onChange={this.onChangeData}
+              name="password"
               type="password"
-              inputProps={{
-                'data-role':'password'
-              }}
+              value={userPassword}
             />
-            {errors.userPasswordError.length ? errors.userPasswordError.map((item, index) => {
-              return (
-                <p className="custom_para" key={index}>{item}</p>
-              )
-            }):null}
+            {errors.password &&
+            <Alert severity="error">{errors.password}</Alert>
+            }
+
           </FormControl>
 
           <FormControl fullWidth style={{ margin: "1rem" }}>
             <InputLabel htmlFor="standard-adornment-amount">Please Confirm Your Password</InputLabel>
             <Input
-              id="standard-adornment-amount"
-              onChange={(event) => {this.handleUserNameChange(event)}}
+              id="confirm_password"
+              name="confirm_password"
+              onChange={this.onChangeData}
               type="password"
-              inputProps={{
-                'data-role':'confirm_password'
-              }}
+              value={userConfirmPassword}
             />
-            {errors.userConfirmPasswordError.length ? errors.userConfirmPasswordError.map((item, index) => {
-              return (
-                <p className="custom_para" key={index}>{item}</p>
-              )
-            }):null}
+            {errors.confirm_password &&
+            <Alert severity="error">{errors.confirm_password}</Alert>
+            }
           </FormControl>
           <Button variant="contained" color="primary" style={{ margin: "2rem" }} onClick={this.onDataSubmit}>
             REGISTER
