@@ -11,24 +11,33 @@ class SearchMovePage extends Component {
     this.state = {
       currentPage: 0,
       startIndex: 0,
-      endIndex: 20
+      endIndex: 20,
+      pageNumbers: 0,
+      itemsPerPage: 20
     }
     this.togglePageNumber = this.togglePageNumber.bind(this);
   }
 
-  togglePageNumber() {
-    console.log('Next previous buttons..');
+  togglePageNumber(event) {
+    let { itemsPerPage } = this.state;
+    let current = parseInt(event.target.innerText);
+    let newStartIndex = itemsPerPage * (current-1);
+    let newEndIndex = newStartIndex + itemsPerPage;
+
+    this.setState({
+      currentPage: current,
+      startIndex: newStartIndex,
+      endIndex: newEndIndex
+    })
   }
 
   componentDidMount() {
     this.props.getPokemonMovesData();
   }
 
-  componentDidUpdate() {
-    console.log('Updated props are : ', this.props);
-  }
   render() {
     const { pokemon_moves } = this.props;
+    let { startIndex, endIndex, itemsPerPage } = this.state;
     return (
       <Fragment>
         <div className="box-container">
@@ -38,10 +47,10 @@ class SearchMovePage extends Component {
             <Input id="my-input" aria-describedby="my-helper-text" />
             <FormHelperText id="my-helper-text">Type the name of the move to search!</FormHelperText>
           </FormControl>
-          {pokemon_moves ? <Pagination count={parseInt(pokemon_moves.results.length/10)} variant="outlined" shape="rounded" onChange={this.togglePageNumber} />
+          {pokemon_moves ? <Pagination count={parseInt(pokemon_moves.results.length/itemsPerPage)} variant="outlined" shape="rounded" onChange={this.togglePageNumber} />
             : null
           }
-          {pokemon_moves ? pokemon_moves.results.map((item, index) => {
+          {pokemon_moves ? pokemon_moves.results.slice(startIndex, endIndex).map((item, index) => {
             return (
               <div className="pokemon_container" key={index}>
                 <p>{item.name.toUpperCase()}</p>

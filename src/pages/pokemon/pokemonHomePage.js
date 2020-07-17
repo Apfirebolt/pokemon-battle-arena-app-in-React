@@ -11,21 +11,38 @@ class PokemonHomePage extends Component {
   constructor() {
     super();
     this.state = {
+      currentPage: 0,
       startIndex: 0,
       endIndex: 20,
-      pageNumbers: 0
+      pageNumbers: 0,
+      itemsPerPage: 20
     }
 
     this.togglePageNumber = this.togglePageNumber.bind(this);
     this.goToPokemonDetail = this.goToPokemonDetail.bind(this);
+    this.getFilteredResults = this.getFilteredResults.bind(this);
   }
 
-  togglePageNumber() {
-    console.log('Next previous buttons..');
+  togglePageNumber(event) {
+    let { itemsPerPage } = this.state;
+    let current = parseInt(event.target.innerText);
+    let newStartIndex = itemsPerPage * (current-1);
+    let newEndIndex = newStartIndex + itemsPerPage;
+
+    this.setState({
+      currentPage: current,
+      startIndex: newStartIndex,
+      endIndex: newEndIndex
+    })
   }
 
   goToPokemonDetail(value) {
     this.props.history.push("/pokemon/detail/" + value);
+  }
+
+  getFilteredResults(results) {
+    let { startIndex, endIndex } = this.state;
+
   }
 
   componentDidMount() {
@@ -34,13 +51,14 @@ class PokemonHomePage extends Component {
   
   render() {
     const { pokemon } = this.props;
+    let { startIndex, endIndex, itemsPerPage } = this.state;
     return (
       <Box className="box-container">
         <h1>List Of Pokemon</h1>
-        {pokemon ? <Pagination count={parseInt(pokemon.results.length/10)} variant="outlined" shape="rounded" onChange={this.togglePageNumber} />
+        {pokemon ? <Pagination count={parseInt(pokemon.results.length/itemsPerPage)} variant="outlined" shape="rounded" onChange={this.togglePageNumber} />
         : null
         }
-        {pokemon ? pokemon.results.map((item, index) => {
+        {pokemon ? pokemon.results.slice(startIndex, endIndex).map((item, index) => {
           return (
             <div key={index} className="pokemon_container">
               <ListItem>{item.name.toUpperCase()}</ListItem>

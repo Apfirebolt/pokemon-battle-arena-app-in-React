@@ -18,13 +18,11 @@ class AccountsRoutePage extends Component {
   render() {
     const { pathPrefix } = this.state;
     return (
-      <Router>
         <Switch>
           <Route name="login" path="/accounts/login" exact component={LoginPage} />
           <Route name="register" path="/accounts/register" exact component={RegisterPage} />
           <Route name="dashboard" path="" exact component={AccountsHomePage} />
         </Switch>
-      </Router>
     )
   }
 }
