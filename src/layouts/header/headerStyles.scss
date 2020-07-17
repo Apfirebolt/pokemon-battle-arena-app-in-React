@@ -5,6 +5,29 @@
   background-color: #61dafb;
 
   .right {
+    .has_nested_items {
+      position: relative;
+      &:hover .nested_list {
+        display: block;
+        transition: all 0.4s ease-out;
+      }
+      .nested_list {
+        position: absolute;
+        background-color: mintcream;
+        margin: 1rem auto;
+        padding: 0;
+        box-shadow: 2px 2px 2px #CCC;
+        width: 300px;
+        display: none;
+        transition: all 0.4s ease-in-out;
+
+        li {
+          padding: 1rem 0;
+          margin: 0;
+          border-radius: 0;
+        }
+      }
+    }
     ul {
       display: flex;
       list-style-type: none;

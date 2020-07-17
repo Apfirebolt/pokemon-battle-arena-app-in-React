@@ -13,4 +13,12 @@ export const GET_POKEMON_DETAIL = 'GET_POKEMON_DETAIL';
 export const SET_POKEMON_DETAIL = 'SET_POKEMON_DETAIL';
 export const GET_POKEMON_DETAIL_ACTION = 'GET_POKEMON_DETAIL_ACTION';
 
+// Get All Pokemon items
+export const GET_ALL_ITEMS = 'GET_ALL_ITEMS';
+export const SET_ALL_ITEMS = 'SET_ALL_ITEMS';
+export const GET_ALL_ITEMS_ACTION = 'GET_ALL_ITEMS_ACTION';
+
+
+
+
 

@@ -4,7 +4,8 @@ import { updateObject } from '../../utility';
 const initialState = {
   pokemon_data: null,
   move_data: null,
-  single_pokemon: null
+  single_pokemon: null,
+  all_items: null
 };
 
 const reducer = ( state = initialState, action ) => {
@@ -15,6 +16,8 @@ const reducer = ( state = initialState, action ) => {
       return updateObject(state, {move_data: action.val});
     case actionTypes.GET_POKEMON_DETAIL_ACTION:
       return updateObject(state, {single_pokemon: action.val});
+    case actionTypes.GET_ALL_ITEMS_ACTION:
+      return updateObject(state, {all_items: action.val});
     default:
       return state;
   }

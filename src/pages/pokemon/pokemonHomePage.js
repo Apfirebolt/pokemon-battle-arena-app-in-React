@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../store/reducers/pokemon/pokemonActions';
-import { ListItem, CircularProgress, Button, Container, Box } from '@material-ui/core';
+import { ListItem, CircularProgress, Button, Container, Box, FormHelperText,
+  Input, InputLabel, FormControl } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
 import Pagination from '@material-ui/lab/Pagination';
 import './main.scss';
@@ -15,12 +16,15 @@ class PokemonHomePage extends Component {
       startIndex: 0,
       endIndex: 20,
       pageNumbers: 0,
-      itemsPerPage: 20
+      itemsPerPage: 20,
+      filterPokemon: '',
+      filterResults: []
     }
 
+    this.callApiData = this.callApiData.bind(this);
     this.togglePageNumber = this.togglePageNumber.bind(this);
     this.goToPokemonDetail = this.goToPokemonDetail.bind(this);
-    this.getFilteredResults = this.getFilteredResults.bind(this);
+    this.filterPokemonFunction = this.filterPokemonFunction.bind(this);
   }
 
   togglePageNumber(event) {
@@ -36,29 +40,64 @@ class PokemonHomePage extends Component {
     })
   }
 
+  filterPokemonFunction(event) {
+    let { pokemon } = this.props;
+    let { filterPokemon, filterResults, pageNumbers, itemsPerPage } = this.state;
+    let currentValue = event.target.value;
+    let newFilteredResults = [];
+    if(currentValue) {
+      newFilteredResults = pokemon.results.filter((item) => {
+        return item.name.indexOf(currentValue) !== -1
+      })
+    }
+    else {
+      newFilteredResults = pokemon.results;
+    }
+    this.setState({
+      filterPokemon: currentValue,
+      filterResults: newFilteredResults,
+      pageNumbers: parseInt((newFilteredResults.length)/itemsPerPage)
+    })
+  }
+
   goToPokemonDetail(value) {
     this.props.history.push("/pokemon/detail/" + value);
   }
 
-  getFilteredResults(results) {
-    let { startIndex, endIndex } = this.state;
+  callApiData() {
+    this.props.getPokemonData();
+    let { filterResults, pageNumbers, itemsPerPage } = this.state;
+    let { pokemon } = this.props;
 
+    if(pokemon && pokemon.results) {
+      let newPageNumbers = parseInt((pokemon.results.length)/itemsPerPage);
+      this.setState({
+        pageNumbers: newPageNumbers,
+        filteredResults: pokemon.results
+      })
+    }
   }
 
   componentDidMount() {
-    this.props.getPokemonData();
+    this.callApiData();
   }
   
   render() {
     const { pokemon } = this.props;
-    let { startIndex, endIndex, itemsPerPage } = this.state;
+    let { startIndex, endIndex, itemsPerPage, filterPokemon, filterResults } = this.state;
     return (
       <Box className="box-container">
         <h1>List Of Pokemon</h1>
-        {pokemon ? <Pagination count={parseInt(pokemon.results.length/itemsPerPage)} variant="outlined" shape="rounded" onChange={this.togglePageNumber} />
+        <FormControl>
+          <InputLabel htmlFor="my-input">Search Pokemon By Name</InputLabel>
+          <Input id="my-input" aria-describedby="my-helper-text" value={filterPokemon} onChange={this.filterPokemonFunction} />
+          <FormHelperText id="my-helper-text">Type the name of the pokemon to search!</FormHelperText>
+        </FormControl>
+        {pokemon ? <Pagination count={parseInt(filterResults.length/itemsPerPage)} variant="outlined" shape="rounded" onChange={this.togglePageNumber} />
         : null
         }
-        {pokemon ? pokemon.results.slice(startIndex, endIndex).map((item, index) => {
+
+        {pokemon && filterResults ? filterResults.slice(startIndex, endIndex).map((item, index) => {
           return (
             <div key={index} className="pokemon_container">
               <ListItem>{item.name.toUpperCase()}</ListItem>

@@ -10,7 +10,7 @@ class DashboardPage extends Component {
   render() {
     return (
       <Fragment>
-        <h1>Dashboard Pgae of the Pokemon React Application</h1>
+        <h1>Pokemon Battle Arena</h1>
       </Fragment>
     )
   }

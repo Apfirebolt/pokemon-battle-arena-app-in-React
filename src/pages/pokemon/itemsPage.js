@@ -5,7 +5,7 @@ import { FormControl, Input, InputLabel, FormHelperText, CircularProgress } from
 import Pagination from '@material-ui/lab/Pagination';
 import './main.scss';
 
-class SearchMovePage extends Component {
+class PokemonItemsPage extends Component {
   constructor() {
     super();
     this.state = {
@@ -14,30 +14,28 @@ class SearchMovePage extends Component {
       endIndex: 20,
       pageNumbers: 1,
       itemsPerPage: 20,
-      moveName: '',
+      itemName: '',
       filterResults: []
     }
-    this.displayFilterMoves = this.displayFilterMoves.bind(this);
+    this.displayFilterItems = this.displayFilterItems.bind(this);
     this.togglePageNumber = this.togglePageNumber.bind(this);
-    this.moveSearchChanged = this.moveSearchChanged.bind(this);
   }
 
-  displayFilterMoves(event) {
+  displayFilterItems(event) {
     let currentValue = event.target.value;
-    let { pokemon_moves } = this.props;
-    let { moveName, filterResults, pageNumbers, itemsPerPage } = this.state;
+    let { pokemon_items } = this.props;
+    let { itemName, filterResults, pageNumbers, itemsPerPage } = this.state;
     let newFilteredResults = [];
-    console.log('Event here is : ', event.target.value);
-    if(currentValue && pokemon_moves) {
-        newFilteredResults = pokemon_moves.results.filter((item) => {
-          return item.name.indexOf(currentValue) !== -1
+    if(currentValue && pokemon_items) {
+      newFilteredResults = pokemon_items.results.filter((item) => {
+        return item.name.indexOf(currentValue) !== -1
       })
     }
     else {
-      newFilteredResults = pokemon_moves.results;
+      newFilteredResults = pokemon_items.results;
     }
     this.setState({
-      moveName: currentValue,
+      itemName: currentValue,
       filterResults: newFilteredResults,
       pageNumbers: parseInt((newFilteredResults.length)/itemsPerPage)
     })
@@ -56,33 +54,26 @@ class SearchMovePage extends Component {
     })
   }
 
-  moveSearchChanged(event) {
-    console.log('More changed event ', event.target.value, this.state.filterResults);
-    this.setState({
-      moveName: event.target.value
-    });
-  }
-
   componentDidMount() {
-    this.props.getPokemonMovesData();
+    this.props.getPokemonItemsData();
   }
 
   render() {
-    const { pokemon_moves } = this.props;
-    let { startIndex, endIndex, itemsPerPage, moveName, filterResults, pageNumbers } = this.state;
+    const { pokemon_items } = this.props;
+    let { startIndex, endIndex, itemsPerPage, itemName, filterResults, pageNumbers } = this.state;
     return (
       <Fragment>
         <div className="box-container">
-          <h1>List of Pokemon Moves</h1>
+          <h1>List of Items in Pokemon</h1>
           <FormControl>
-            <InputLabel htmlFor="my-input">Search Pokemon By Name</InputLabel>
-            <Input id="my-input" aria-describedby="my-helper-text" onChange={this.displayFilterMoves} value={moveName} />
-            <FormHelperText id="my-helper-text">Type the name of the pokemon move to search!</FormHelperText>
+            <InputLabel htmlFor="my-input">Search Item By Name</InputLabel>
+            <Input id="my-input" aria-describedby="my-helper-text" onChange={this.displayFilterItems} value={itemName} />
+            <FormHelperText id="my-helper-text">Type the name of the item to search!</FormHelperText>
           </FormControl>
-          {pokemon_moves ? <Pagination count={pageNumbers} variant="outlined" shape="rounded" onChange={this.togglePageNumber} />
+          {pokemon_items ? <Pagination count={pageNumbers} variant="outlined" shape="rounded" onChange={this.togglePageNumber} />
             : null
           }
-          {pokemon_moves ? filterResults.slice(startIndex, endIndex).map((item, index) => {
+          {pokemon_items ? filterResults.slice(startIndex, endIndex).map((item, index) => {
             return (
               <div className="pokemon_container" key={index}>
                 <p>{item.name.toUpperCase()}</p>
@@ -98,16 +89,16 @@ class SearchMovePage extends Component {
 
 const mapStateToProps = state => {
   return {
-    pokemon_moves: state.pkmn.move_data,
+    pokemon_items: state.pkmn.all_items,
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getPokemonMovesData: () => {
-      dispatch(actionCreators.get_pokemon_moves_util());
+    getPokemonItemsData: () => {
+      dispatch(actionCreators.get_pokemon_items_util());
     },
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchMovePage);
+export default connect(mapStateToProps, mapDispatchToProps)(PokemonItemsPage);

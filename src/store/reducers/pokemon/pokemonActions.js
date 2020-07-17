@@ -26,6 +26,14 @@ export const set_pokemon_detail_data = ( value ) => {
   };
 };
 
+// Set all item data
+export const set_pokemon_items_data = ( value ) => {
+  return {
+    type: actionTypes.GET_ALL_ITEMS_ACTION,
+    val: value
+  };
+};
+
 // Fetch quizes from the Open DB Api
 export const get_pokemon_util = () => {
   return (dispatch) => {
@@ -61,6 +69,20 @@ export const get_pokemon_detail_util = (pokemon_name) => {
     axios.get(url)
       .then((response) => {
         dispatch(set_pokemon_detail_data(response.data));
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+  }
+}
+
+// Fetch data related to all pokemon items
+export const get_pokemon_items_util = () => {
+  return (dispatch) => {
+    const url = process.env.REACT_APP_URL + 'item/?offset=0&limit=900';
+    axios.get(url)
+      .then((response) => {
+        dispatch(set_pokemon_items_data(response.data));
       })
       .catch((error) => {
         console.error(error);
