@@ -43,7 +43,7 @@ export const get_pokemon_util = () => {
 // Fetch data of all the moves from Pokemon API
 export const get_pokemon_moves_util = () => {
   return (dispatch) => {
-    const url = process.env.REACT_APP_URL + 'move';
+    const url = process.env.REACT_APP_URL + 'move?offset=0&limit=800';
     axios.get(url)
       .then((response) => {
         dispatch(set_pokemon_moves_data(response.data));

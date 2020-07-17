@@ -2,13 +2,24 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../store/reducers/pokemon/pokemonActions';
 import { FormControl, Input, InputLabel, FormHelperText, CircularProgress } from '@material-ui/core';
+import Pagination from '@material-ui/lab/Pagination';
+import './main.scss';
 
 class SearchMovePage extends Component {
   constructor() {
     super();
-
-
+    this.state = {
+      currentPage: 0,
+      startIndex: 0,
+      endIndex: 20
+    }
+    this.togglePageNumber = this.togglePageNumber.bind(this);
   }
+
+  togglePageNumber() {
+    console.log('Next previous buttons..');
+  }
+
   componentDidMount() {
     this.props.getPokemonMovesData();
   }
@@ -20,17 +31,25 @@ class SearchMovePage extends Component {
     const { pokemon_moves } = this.props;
     return (
       <Fragment>
-        <h1>Search Move page</h1>
-        <FormControl>
-          <InputLabel htmlFor="my-input">Email address</InputLabel>
-          <Input id="my-input" aria-describedby="my-helper-text" />
-          <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
-        </FormControl>
-        {pokemon_moves ? pokemon_moves.results.map((item, index) => {
-          return (
-            <li key={index}>{item.name}</li>
-          )
-        }) : <CircularProgress size={200} color={"secondary"} disableShrink />}
+        <div className="box-container">
+          <h1>List of Pokemon Moves</h1>
+          <FormControl>
+            <InputLabel htmlFor="my-input">Search Move</InputLabel>
+            <Input id="my-input" aria-describedby="my-helper-text" />
+            <FormHelperText id="my-helper-text">Type the name of the move to search!</FormHelperText>
+          </FormControl>
+          {pokemon_moves ? <Pagination count={parseInt(pokemon_moves.results.length/10)} variant="outlined" shape="rounded" onChange={this.togglePageNumber} />
+            : null
+          }
+          {pokemon_moves ? pokemon_moves.results.map((item, index) => {
+            return (
+              <div className="pokemon_container" key={index}>
+                <p>{item.name.toUpperCase()}</p>
+                <p>{item.url}</p>
+              </div>
+            )
+          }) : <CircularProgress size={200} color={"secondary"} disableShrink />}
+        </div>
       </Fragment>
     )
   }

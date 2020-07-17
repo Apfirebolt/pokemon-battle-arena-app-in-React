@@ -1,4 +1,24 @@
 .box-container {
+  width: 80%;
+  margin: 1rem auto;
+  padding: 1rem;
+  background-color: aliceblue;
+
+  nav .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.pokemon_container {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #FFF;
+  margin: 1rem auto;
+  padding: 1rem;
+
+  button {
+    min-width: 200px;
+  }
 }

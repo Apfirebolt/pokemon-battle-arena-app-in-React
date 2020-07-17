@@ -4,6 +4,7 @@ import * as actionCreators from '../../store/reducers/pokemon/pokemonActions';
 import { ListItem, CircularProgress, Button, Container, Box } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
 import Pagination from '@material-ui/lab/Pagination';
+import './main.scss';
 
 
 class PokemonHomePage extends Component {
@@ -41,10 +42,10 @@ class PokemonHomePage extends Component {
         }
         {pokemon ? pokemon.results.map((item, index) => {
           return (
-            <div key={index}>
-              <ListItem>{item.name}</ListItem>
+            <div key={index} className="pokemon_container">
+              <ListItem>{item.name.toUpperCase()}</ListItem>
 
-              <Button variant="outlined" color="secondary" onClick={() => this.goToPokemonDetail(item.name)}>
+              <Button variant="outlined" color="primary" onClick={() => this.goToPokemonDetail(item.name)}>
                 View Details
               </Button>
             </div>
