@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 
-
 class AccountsHomePage extends Component {
   constructor() {
     super();

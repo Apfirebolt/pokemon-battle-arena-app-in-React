@@ -20,9 +20,9 @@ class AccountsRoutePage extends Component {
     return (
       <Router>
         <Switch>
-          <Route path="/accounts/login" exact component={LoginPage} />
-          <Route path="/accounts/register" exact component={RegisterPage} />
-          <Route path="" exact component={AccountsHomePage} />
+          <Route name="login" path="/accounts/login" exact component={LoginPage} />
+          <Route name="register" path="/accounts/register" exact component={RegisterPage} />
+          <Route name="dashboard" path="" exact component={AccountsHomePage} />
         </Switch>
       </Router>
     )

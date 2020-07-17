@@ -1,0 +1,39 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #61dafb;
+
+  .right {
+    ul {
+      display: flex;
+      list-style-type: none;
+
+      li {
+        font-size: 1rem;
+        margin: auto 1rem;
+        padding: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #FFFFFF;
+          border-bottom: 1px solid black;
+          border-radius: 10px;
+          transition: all 0.3s ease-out;
+        }
+
+        a {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .left {
+    .brand {
+      margin-left: 1rem;
+      color: indianred;
+    }
+  }
+}
