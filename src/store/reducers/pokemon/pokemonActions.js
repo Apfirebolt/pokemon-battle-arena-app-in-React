@@ -1,6 +1,17 @@
 import * as actionTypes from './pokemonActionTypes';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const toastOptions = {
+  position: "top-right",
+  autoClose: 2000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+}
 
 
 export const set_pokemon_data = ( value ) => {
@@ -76,6 +87,7 @@ export const get_pokemon_util = () => {
       })
       .catch((error) => {
         console.error(error);
+        toast.error("API Request failed, there was some error in fetching pokemon data!", toastOptions);
       })
   }
 }
@@ -90,6 +102,7 @@ export const get_pokemon_moves_util = () => {
       })
       .catch((error) => {
         console.error(error);
+        toast.error("API Request failed, there was some error in fetching pokemon moves!", toastOptions);
       })
   }
 }
@@ -104,6 +117,7 @@ export const get_pokemon_detail_util = (pokemon_name) => {
       })
       .catch((error) => {
         console.error(error);
+        toast.error("API Request failed, there was some error in fetching pokemon details!", toastOptions);
       })
   }
 }
@@ -118,6 +132,7 @@ export const get_pokemon_items_util = () => {
       })
       .catch((error) => {
         console.error(error);
+        toast.error("API Request failed, there was some error in fetching pokemon items!", toastOptions);
       })
   }
 }
@@ -132,6 +147,7 @@ export const get_single_move_detail = (move_id) => {
       })
       .catch((error) => {
         console.error(error);
+        toast.error("API Request failed, there was some error in fetching single move data!", toastOptions);
       })
   }
 }
@@ -143,9 +159,11 @@ export const get_pokemon_types_data = () => {
     axios.get(url)
       .then((response) => {
         dispatch(set_pokemon_types_data(response.data));
+        toast.info("Pokemon Types successfully fetched!", toastOptions);
       })
       .catch((error) => {
         console.error(error);
+        toast.error("API Request failed, there was some error in fetching pokemon types data!", toastOptions);
       })
   }
 }
@@ -157,9 +175,11 @@ export const get_pokemon_type_detail_data = (type_name) => {
     axios.get(url)
       .then((response) => {
         dispatch(set_pokemon_type_detail(response.data));
+        toast.success("Pokemon Type details fetched successfully!", toastOptions);
       })
       .catch((error) => {
         console.error(error);
+        toast.error("API Request failed, there was some error in fetching pokemon type details!", toastOptions);
       })
   }
 }
@@ -171,9 +191,12 @@ export const get_item_detail_data = (item_id) => {
     axios.get(url)
       .then((response) => {
         dispatch(set_item_detail_data(response.data));
+        toast.success("Item details fetched!", toastOptions);
       })
       .catch((error) => {
         console.error(error);
+        toast.error("API Request failed, there was some error in fetching item details!", toastOptions);
       })
   }
 }
+

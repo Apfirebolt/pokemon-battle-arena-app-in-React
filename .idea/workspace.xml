@@ -2,22 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b871712e-ce0b-4831-915a-86390b299dcc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pokemon/damageRelations.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pokemon/main.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pokemon/typesMove.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/pokemon/typesPokemon.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pages/pokemon/itemDetail.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pages/pokemon/pokemonTypes.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/pages/pokemon/typeDetail.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/layouts/header/header.js" afterPath="$PROJECT_DIR$/src/layouts/header/header.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/pokemon/itemsPage.js" afterPath="$PROJECT_DIR$/src/pages/pokemon/itemsPage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/pokemon/main.scss" afterPath="$PROJECT_DIR$/src/pages/pokemon/main.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/pokemon/pokemonRoutes.js" afterPath="$PROJECT_DIR$/src/pages/pokemon/pokemonRoutes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/pokemon/searchMove.js" afterPath="$PROJECT_DIR$/src/pages/pokemon/searchMove.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/reducers/pokemon/pokemon.js" afterPath="$PROJECT_DIR$/src/store/reducers/pokemon/pokemon.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/reducers/pokemon/pokemonActionTypes.js" afterPath="$PROJECT_DIR$/src/store/reducers/pokemon/pokemonActionTypes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/layouts/footer/footer.js" afterPath="$PROJECT_DIR$/src/layouts/footer/footer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/layouts/header/headerStyles.scss" afterPath="$PROJECT_DIR$/src/layouts/header/headerStyles.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/store/reducers/pokemon/pokemonActions.js" afterPath="$PROJECT_DIR$/src/store/reducers/pokemon/pokemonActions.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -44,6 +31,50 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="pokemonActions.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/store/reducers/pokemon/pokemonActions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2218">
+              <caret line="89" column="86" lean-forward="false" selection-start-line="89" selection-start-column="86" selection-end-line="89" selection-end-column="86" />
+              <folding>
+                <element signature="e#0#52#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/layouts/header/header.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="400">
+              <caret line="18" column="59" lean-forward="false" selection-start-line="18" selection-start-column="59" selection-end-line="18" selection-end-column="59" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="headerStyles.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/layouts/header/headerStyles.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="61" column="23" lean-forward="false" selection-start-line="61" selection-start-column="23" selection-end-line="61" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="footer.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/layouts/footer/footer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="31" column="16" lean-forward="false" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="main.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/pokemon/main.scss">
           <provider selected="true" editor-type-id="text-editor">
@@ -64,10 +95,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="typeDetail.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="typeDetail.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/pokemon/typeDetail.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-475">
+            <state relative-caret-position="-850">
               <caret line="26" column="58" lean-forward="false" selection-start-line="26" selection-start-column="58" selection-end-line="26" selection-end-column="58" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
@@ -136,8 +167,6 @@
         <option value="$PROJECT_DIR$/src/pages/accounts/accountRoutes.js" />
         <option value="$PROJECT_DIR$/src/components/pokemon/searchMove.js" />
         <option value="$PROJECT_DIR$/src/pages/pokemon/pokemonHomePage.js" />
-        <option value="$PROJECT_DIR$/src/layouts/footer/footer.js" />
-        <option value="$PROJECT_DIR$/src/layouts/header/headerStyles.scss" />
         <option value="$PROJECT_DIR$/src/pages/dashboard.js" />
         <option value="$PROJECT_DIR$/src/App.scss" />
         <option value="$PROJECT_DIR$/src/pages/pokemon/detailMove.js" />
@@ -148,7 +177,6 @@
         <option value="$PROJECT_DIR$/src/pages/pokemon/main.scss" />
         <option value="$PROJECT_DIR$/src/store/reducers/pokemon/pokemonActionTypes.js" />
         <option value="$PROJECT_DIR$/src/store/reducers/pokemon/pokemon.js" />
-        <option value="$PROJECT_DIR$/src/store/reducers/pokemon/pokemonActions.js" />
         <option value="$PROJECT_DIR$/src/pages/pokemon/pokemonRoutes.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/pages/pokemon/pokemonTypes.js" />
@@ -157,6 +185,9 @@
         <option value="$PROJECT_DIR$/src/components/pokemon/main.scss" />
         <option value="$PROJECT_DIR$/src/components/pokemon/damageRelations.js" />
         <option value="$PROJECT_DIR$/src/pages/pokemon/typeDetail.js" />
+        <option value="$PROJECT_DIR$/src/store/reducers/pokemon/pokemonActions.js" />
+        <option value="$PROJECT_DIR$/src/layouts/header/headerStyles.scss" />
+        <option value="$PROJECT_DIR$/src/layouts/footer/footer.js" />
       </list>
     </option>
   </component>
@@ -236,6 +267,13 @@
               <item name="react_pokemon" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="layouts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="react_pokemon" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react_pokemon" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+              <item name="footer" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="react_pokemon" type="b2602c69:ProjectViewProjectNode" />
@@ -339,12 +377,12 @@
       <workItem from="1595058589295" duration="385000" />
       <workItem from="1595061375467" duration="1560000" />
       <workItem from="1595069863893" duration="12504000" />
-      <workItem from="1595101619685" duration="6550000" />
+      <workItem from="1595101619685" duration="9036000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98595000" />
+    <option name="totallyTimeSpent" value="101081000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -535,13 +573,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pokemon/searchMove.js" />
-    <entry file="file://$PROJECT_DIR$/src/layouts/footer/footer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-586">
-          <caret line="8" column="46" lean-forward="false" selection-start-line="8" selection-start-column="46" selection-end-line="8" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/dashboard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -556,24 +587,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/layouts/header/headerStyles.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="21" column="40" lean-forward="false" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
           <caret line="2" column="21" lean-forward="false" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/layouts/header/header.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="18" column="59" lean-forward="false" selection-start-line="18" selection-start-column="59" selection-end-line="18" selection-end-column="59" />
         </state>
       </provider>
     </entry>
@@ -634,14 +651,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="282">
           <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/reducers/pokemon/pokemonActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="55" column="57" lean-forward="false" selection-start-line="55" selection-start-column="57" selection-end-line="55" selection-end-column="57" />
           <folding />
         </state>
       </provider>
@@ -774,10 +783,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/pokemon/typeDetail.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-475">
+        <state relative-caret-position="-850">
           <caret line="26" column="58" lean-forward="false" selection-start-line="26" selection-start-column="58" selection-end-line="26" selection-end-column="58" />
           <folding>
             <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/reducers/pokemon/pokemonActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2218">
+          <caret line="89" column="86" lean-forward="false" selection-start-line="89" selection-start-column="86" selection-end-line="89" selection-end-column="86" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/layouts/header/header.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="18" column="59" lean-forward="false" selection-start-line="18" selection-start-column="59" selection-end-line="18" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/layouts/header/headerStyles.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="61" column="23" lean-forward="false" selection-start-line="61" selection-start-column="23" selection-end-line="61" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/layouts/footer/footer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="31" column="16" lean-forward="false" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>

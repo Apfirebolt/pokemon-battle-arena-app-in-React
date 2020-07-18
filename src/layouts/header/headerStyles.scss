@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #61dafb;
+  background-color: #000;
 
   .right {
     .has_nested_items {
@@ -48,6 +48,7 @@
 
         a {
           text-decoration: none;
+          color: #F5695E;
         }
       }
     }
@@ -56,7 +57,9 @@
   .left {
     .brand {
       margin-left: 1rem;
-      color: indianred;
+      color: azure;
+      font-size: 2rem;
+      font-weight: 600;
     }
   }
 }
