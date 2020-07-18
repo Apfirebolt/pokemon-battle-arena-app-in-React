@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../store/reducers/pokemon/pokemonActions';
-import { FormControl, Input, InputLabel, FormHelperText, CircularProgress } from '@material-ui/core';
+import { FormControl, Input, InputLabel, FormHelperText, CircularProgress, Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import Pagination from '@material-ui/lab/Pagination';
 import './main.scss';
@@ -64,6 +64,12 @@ class SearchMovePage extends Component {
     });
   }
 
+  goToMoveUrl(passed_url) {
+    let match = passed_url.match('\/[0-9]+');
+    let move_id = match[0].substring(1);
+    this.props.history.push("/pokemon/move/" + move_id);
+  }
+
   componentDidMount() {
     this.props.getPokemonMovesData();
   }
@@ -76,7 +82,7 @@ class SearchMovePage extends Component {
         <div className="box-container">
           <h1>List of Pokemon Moves</h1>
           <FormControl>
-            <InputLabel htmlFor="my-input">Search Pokemon By Name</InputLabel>
+            <InputLabel htmlFor="my-input">Search Pokemon Moves By Name</InputLabel>
             <Input id="my-input" aria-describedby="my-helper-text" onChange={this.displayFilterMoves} value={moveName} />
             <FormHelperText id="my-helper-text">Type the name of the pokemon move to search!</FormHelperText>
           </FormControl>
@@ -87,7 +93,7 @@ class SearchMovePage extends Component {
             return (
               <div className="pokemon_container" key={index}>
                 <p>{item.name.toUpperCase()}</p>
-                <Link to={`/pokemon/move/${index}`}>{item.url}</Link>
+                <Button variant="contained" color="primary" onClick={() => {this.goToMoveUrl(item.url)}}>View Move Details</Button>
               </div>
             )
           }) : <CircularProgress size={200} color={"secondary"} disableShrink />}

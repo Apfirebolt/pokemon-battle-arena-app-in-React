@@ -16,6 +16,7 @@ export default function SimpleMenu() {
               <ul className="nested_list">
                 <li><Link to="/pokemon/move">Pokemon Move List</Link></li>
                 <li><Link to="/pokemon/items">Pokemon Items</Link></li>
+                <li><Link to="/pokemon/types">Pokemon Types</Link></li>
                 <li>Create Team</li>
               </ul>
             </li>

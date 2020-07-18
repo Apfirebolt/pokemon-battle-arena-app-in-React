@@ -21,6 +21,12 @@
   button {
     min-width: 200px;
   }
+
+  a {
+    text-decoration: none;
+    color: #FFF;
+    font-weight: 500;
+  }
 }
 
 .pokemon_move_container {
@@ -38,6 +44,34 @@
       padding: 0.5rem;
       border-bottom: 1px solid black;
 
+    }
+  }
+}
+
+.type_container {
+  width: 80%;
+  margin: 1rem auto;
+
+  a {
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.5rem;
+  }
+}
+
+.item_detail {
+  width: 80%;
+  margin: 1rem auto;
+  h1 {
+    color: seagreen;
+  }
+
+
+  ul {
+    li {
+      text-align: center;
+      font-size: 1.2rem;
     }
   }
 }

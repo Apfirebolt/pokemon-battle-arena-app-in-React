@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../store/reducers/pokemon/pokemonActions';
-import { FormControl, Input, InputLabel, FormHelperText, CircularProgress } from '@material-ui/core';
+import { FormControl, Input, InputLabel, FormHelperText, CircularProgress, Button } from '@material-ui/core';
 import Pagination from '@material-ui/lab/Pagination';
 import './main.scss';
 
@@ -19,6 +19,7 @@ class PokemonItemsPage extends Component {
     }
     this.displayFilterItems = this.displayFilterItems.bind(this);
     this.togglePageNumber = this.togglePageNumber.bind(this);
+    this.goToMoveUrl = this.goToMoveUrl.bind(this);
   }
 
   displayFilterItems(event) {
@@ -54,6 +55,12 @@ class PokemonItemsPage extends Component {
     })
   }
 
+  goToMoveUrl(passed_url) {
+    let match = passed_url.match('\/[0-9]+');
+    let item_id = match[0].substring(1);
+    this.props.history.push("/pokemon/items/" + item_id);
+  }
+
   componentDidMount() {
     this.props.getPokemonItemsData();
   }
@@ -77,7 +84,7 @@ class PokemonItemsPage extends Component {
             return (
               <div className="pokemon_container" key={index}>
                 <p>{item.name.toUpperCase()}</p>
-                <p>{item.url}</p>
+                <Button onClick={() => {this.goToMoveUrl(item.url)}}>Item Details</Button>
               </div>
             )
           }) : <CircularProgress size={200} color={"secondary"} disableShrink />}

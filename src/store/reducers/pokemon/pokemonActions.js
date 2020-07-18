@@ -42,7 +42,31 @@ export const set_single_move_detail = ( value ) => {
   };
 };
 
-// Fetch quizes from the Open DB Api
+// Set pokemon types data
+export const set_pokemon_types_data = ( value ) => {
+  return {
+    type: actionTypes.GET_POKEMON_TYPE_DATA_ACTION,
+    val: value
+  };
+};
+
+// Set pokemon types data
+export const set_pokemon_type_detail = ( value ) => {
+  return {
+    type: actionTypes.GET_POKEMON_TYPE_DETAIL_DATA_ACTION,
+    val: value
+  };
+};
+
+// Set data for a specific item
+export const set_item_detail_data = (value) => {
+  return {
+    type: actionTypes.GET_ITEM_DETAIL_ACTION,
+    val: value
+  }
+}
+
+// Fetch all pokemon from api
 export const get_pokemon_util = () => {
   return (dispatch) => {
     const url = process.env.REACT_APP_URL + 'pokemon?limit=1000&offset=0';
@@ -105,6 +129,48 @@ export const get_single_move_detail = (move_id) => {
     axios.get(url)
       .then((response) => {
         dispatch(set_single_move_detail(response.data));
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+  }
+}
+
+// Fetch pokemon types data
+export const get_pokemon_types_data = () => {
+  return (dispatch) => {
+    const url = process.env.REACT_APP_URL + 'type/';
+    axios.get(url)
+      .then((response) => {
+        dispatch(set_pokemon_types_data(response.data));
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+  }
+}
+
+// Fetch data for a specific pokemon type using type name as key
+export const get_pokemon_type_detail_data = (type_name) => {
+  return (dispatch) => {
+    const url = process.env.REACT_APP_URL + 'type/' + type_name;
+    axios.get(url)
+      .then((response) => {
+        dispatch(set_pokemon_type_detail(response.data));
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+  }
+}
+
+// Fetch Item detail data
+export const get_item_detail_data = (item_id) => {
+  return (dispatch) => {
+    const url = process.env.REACT_APP_URL + 'item/' + item_id;
+    axios.get(url)
+      .then((response) => {
+        dispatch(set_item_detail_data(response.data));
       })
       .catch((error) => {
         console.error(error);
