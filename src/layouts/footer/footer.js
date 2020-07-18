@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Logo from './rayquaza.jpg';
+import RayquazaImage from './rayquaza.jpg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,6 +26,7 @@ const FooterComponent = () => {
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
+            <img src={RayquazaImage} alt="Logo" height="400" width="400" />;
             <p>
               A virtual pokemon battle arena where you can create teams and challenge others for a battle, includes some
               other social networking features currently in development.
