@@ -22,3 +22,22 @@
     min-width: 200px;
   }
 }
+
+.pokemon_move_container {
+  padding: 1rem;
+  margin: 1.5rem auto;
+  p {
+    color: seagreen;
+    font-size: 1.5rem;
+  }
+  ul {
+    list-style-type: none;
+    margin: 1.5rem auto;
+    li {
+      background-color: #FFFFFF;
+      padding: 0.5rem;
+      border-bottom: 1px solid black;
+
+    }
+  }
+}

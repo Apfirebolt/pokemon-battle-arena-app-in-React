@@ -34,6 +34,14 @@ export const set_pokemon_items_data = ( value ) => {
   };
 };
 
+// Set single move detail
+export const set_single_move_detail = ( value ) => {
+  return {
+    type: actionTypes.GET_MOVE_DETAIL_ACTION,
+    val: value
+  };
+};
+
 // Fetch quizes from the Open DB Api
 export const get_pokemon_util = () => {
   return (dispatch) => {
@@ -83,6 +91,20 @@ export const get_pokemon_items_util = () => {
     axios.get(url)
       .then((response) => {
         dispatch(set_pokemon_items_data(response.data));
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+  }
+}
+
+// Fetch move detail for a given move
+export const get_single_move_detail = (move_id) => {
+  return (dispatch) => {
+    const url = process.env.REACT_APP_URL + 'move/' + move_id;
+    axios.get(url)
+      .then((response) => {
+        dispatch(set_single_move_detail(response.data));
       })
       .catch((error) => {
         console.error(error);

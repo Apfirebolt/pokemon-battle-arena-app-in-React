@@ -18,6 +18,10 @@ export const GET_ALL_ITEMS = 'GET_ALL_ITEMS';
 export const SET_ALL_ITEMS = 'SET_ALL_ITEMS';
 export const GET_ALL_ITEMS_ACTION = 'GET_ALL_ITEMS_ACTION';
 
+// Move details data
+export const GET_MOVE_DETAIL = 'GET_MOVE_DETAIL';
+export const SET_MOVE_DETAIL = 'SET_MOVE_DETAIL';
+export const GET_MOVE_DETAIL_ACTION = 'GET_MOVE_DETAIL_ACTION';
 
 
 

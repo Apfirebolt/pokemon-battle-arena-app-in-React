@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../store/reducers/pokemon/pokemonActions';
 import { FormControl, Input, InputLabel, FormHelperText, CircularProgress } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import Pagination from '@material-ui/lab/Pagination';
 import './main.scss';
 
@@ -86,7 +87,7 @@ class SearchMovePage extends Component {
             return (
               <div className="pokemon_container" key={index}>
                 <p>{item.name.toUpperCase()}</p>
-                <p>{item.url}</p>
+                <Link to={`/pokemon/move/${index}`}>{item.url}</Link>
               </div>
             )
           }) : <CircularProgress size={200} color={"secondary"} disableShrink />}

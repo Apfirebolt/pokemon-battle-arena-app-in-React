@@ -5,7 +5,8 @@ const initialState = {
   pokemon_data: null,
   move_data: null,
   single_pokemon: null,
-  all_items: null
+  all_items: null,
+  single_move_data: null
 };
 
 const reducer = ( state = initialState, action ) => {
@@ -18,6 +19,8 @@ const reducer = ( state = initialState, action ) => {
       return updateObject(state, {single_pokemon: action.val});
     case actionTypes.GET_ALL_ITEMS_ACTION:
       return updateObject(state, {all_items: action.val});
+    case actionTypes.GET_MOVE_DETAIL_ACTION:
+      return updateObject(state, {single_move_data: action.val});
     default:
       return state;
   }
